@@ -1,5 +1,6 @@
 import { getTrendingFilms } from "components/Service"
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom";
 
 export const Home = () => {
     const [films, setFilms] = useState([]);
@@ -21,7 +22,7 @@ export const Home = () => {
             <ul>
                 {films.map(film =>
                     <li key={film.id}>
-                        <p>{film.title || film.name}</p>
+                        <Link to={`/movies/${film.id}`}>{film.title || film.name}</Link>
                     </li>
                 )}
             </ul>
