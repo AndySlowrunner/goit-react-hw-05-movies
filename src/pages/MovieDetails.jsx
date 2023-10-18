@@ -1,13 +1,11 @@
-// import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react"
 import { getFilmDetails } from "components/Service"
 
-export const MovietDetails = () => {
+export const MovieDetails = () => {
     const { id } = useParams();
     const [movie, setMovie] = useState({});
-    const { title, overview, genres } = movie;
-
+    
     useEffect(() => {
         getFilmDetails(id)
             .then((response) => {
@@ -21,17 +19,29 @@ export const MovietDetails = () => {
 
     return (
         <main>
-            <h2>{title}</h2>
-            <h3>Overview</h3>
-            <p>{overview}</p>
-            <h3>Genres</h3>
-            <ul>
-            {genres.map(genre => (
-                <li key={genre.id}>{genre.name}</li>
-            ))}
-            </ul>            
-            <p>Information</p>
+            <img src={movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : 'https://www.tgv.com.my/assets/images/404/movie-poster.jpg'} width={320} alt="poster"/>
+            {movie.title ? <h2>{movie.title}</h2> : null}
+            {movie.vote_average ? <p>User Score: {movie.vote_average.toFixed(1) * 10}%</p> : null}
+            {movie.overview ? (
+            <div>
+                <h3>Overview</h3>
+                <p>{movie.overview}</p>
+            </div>
+            ) : null}
+            {movie.genres ? (
+            <div>
+                <h3>Genres</h3>
+                <ul>
+                {movie.genres.map((genre) => (
+                    <li key={genre.id}>{genre.name}</li>
+                ))}
+                </ul>
+            </div>
+            ) : null}
+            <p>Additional information</p>
         </main>
     )
-    
 }
+
+    // const { title, overview, genres, vote_average } = movie
+    // console.log(movie && typeof(movie));
