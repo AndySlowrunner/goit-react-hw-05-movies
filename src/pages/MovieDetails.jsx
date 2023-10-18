@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, Outlet, useParams } from "react-router-dom";
 import { useEffect, useState } from "react"
 import { getFilmDetails } from "components/Service"
 
@@ -19,7 +19,10 @@ export const MovieDetails = () => {
 
     return (
         <main>
-            <img src={movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : 'https://www.tgv.com.my/assets/images/404/movie-poster.jpg'} width={320} alt="poster"/>
+            <img
+                src={movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : 'https://www.tgv.com.my/assets/images/404/movie-poster.jpg'}
+                width={320} alt="poster"
+            />
             {movie.title ? <h2>{movie.title}</h2> : null}
             {movie.vote_average ? <p>User Score: {movie.vote_average.toFixed(1) * 10}%</p> : null}
             {movie.overview ? (
@@ -39,9 +42,16 @@ export const MovieDetails = () => {
             </div>
             ) : null}
             <p>Additional information</p>
+            <ul>
+                <li>
+                    <Link to="cast">Cast</Link>
+                </li>
+                <li>
+                    <Link to="reviews">Reviews</Link>
+                </li>
+            </ul>
+            <Outlet/>
         </main>
     )
 }
 
-    // const { title, overview, genres, vote_average } = movie
-    // console.log(movie && typeof(movie));
