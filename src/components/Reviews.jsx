@@ -20,15 +20,15 @@ export const Reviews = () => {
     
     return (
         <div>
-            {reviews.results ? (
-                    <ul>
-                        {reviews.results.map(result => (
-                            <li key={result.id}>
-                                <h3>Author: {result.author}</h3>
-                                <p>{result.content}</p>
-                            </li>))}
-                    </ul>
-                ) : ('На даний момент відгуків немає.')
+            {reviews.results && reviews.results.length > 0 ? (
+                <ul>
+                    {reviews.results.map(result => (
+                        <li key={result.id}>
+                            <h3>Author: {result.author}</h3>
+                            <p>{result.content}</p>
+                        </li>))}
+                </ul>
+            ) : (<p>На даний момент відгуків немає</p>)
             }
         </div>
     )
