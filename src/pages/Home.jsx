@@ -1,3 +1,4 @@
+import { FilmsList } from "components/FilmsList";
 import { getTrendingFilms } from "components/Service"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
@@ -19,13 +20,7 @@ export const Home = () => {
     return (
         <main>
             <h1>Trending today:</h1>
-            <ul>
-                {films.map(film =>
-                    <li key={film.id}>
-                        <Link to={`/movies/${film.id}`}>{film.title || film.name}</Link>
-                    </li>
-                )}
-            </ul>
+            <FilmsList films={films}/>
         </main>
     )
 }
