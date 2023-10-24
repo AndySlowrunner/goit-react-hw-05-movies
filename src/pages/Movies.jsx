@@ -8,13 +8,15 @@ export const Movies = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const [films, setFilms] = useState([]);
     const query = searchParams.get('query') ?? '';
-    
-    console.log(query);
-    
-    const handleSubmit = (value) => {
 
-        setSearchParams( value !== "" ? { query: value } : {} );
+    // console.log(query);
+    
+    const handleChange = (value) => {
+
+        setSearchParams({ query: value });
     };
+
+
 
     useEffect(() => {
         searchFilmByQuery(query)
@@ -31,7 +33,7 @@ export const Movies = () => {
         <main>
             <SearchFild
                 query={query}
-                onSubmit={(e)=>{handleSubmit(e.target.element.query.value)}} />
+                onChange={handleChange} />
             {films.length > 0 && <FilmsList films={films} />}
             
         </main>

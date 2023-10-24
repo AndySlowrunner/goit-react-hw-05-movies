@@ -1,12 +1,12 @@
-export const SearchFild = ({ query, onSubmit }) => {
+export const SearchFild = ({ query, onChange }) => {
 
 
     return (
-        <form onSubmit={onSubmit}>
+        <form>
             <input
                 type="text"
                 value={query}
-                // onChange={(e) => {onChange(e.target.value);}}
+                onChange={(e) => {onChange(e.target.value);}}
             />
             <button type="submit">Search</button>
         </form>
