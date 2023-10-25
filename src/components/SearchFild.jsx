@@ -8,7 +8,7 @@ export const SearchFild = ({ query, onChange }) => {
                 value={query}
                 onChange={(e) => {onChange(e.target.value);}}
             />
-            <button type="submit">Search</button>
+            <button type="button">Search</button>
         </form>
     )
 }
