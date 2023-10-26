@@ -1,7 +1,7 @@
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react"
 import { getFilmDetails } from "components/Service"
-import { StyledAddInfo, StyledBox, StyledText } from "./MovieDetails.styled";
+import { StyledAddInfo, StyledBox, StyledLink, StyledText } from "./MovieDetails.styled";
 
 export const MovieDetails = () => {
     const { id } = useParams();
@@ -25,7 +25,7 @@ export const MovieDetails = () => {
 
     return (
         <main>
-            <Link to={backLinkLocationRef.current}>Go back</Link>
+            <StyledLink to={backLinkLocationRef.current}>Go back</StyledLink>
             <StyledBox>
                 <img
                     src={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : defaultImg}

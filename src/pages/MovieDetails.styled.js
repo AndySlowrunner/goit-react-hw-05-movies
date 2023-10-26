@@ -1,7 +1,9 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const StyledBox = styled.div`
     display: flex;
+    margin-top: 8px;
     border-bottom: 3px solid gray;
     > img {
         margin-bottom: 16px;
@@ -22,6 +24,13 @@ export const StyledAddInfo = styled.div`
     border-bottom: 3px solid gray;
 `;
 
-export const StyledBackButton = styled.p`
-    margin: 0;
+export const StyledLink = styled(NavLink)`
+    border: 1px solid darkgray;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    padding-right: 4px;
+    padding-left: 4px;
+    text-align: center;
+    text-decoration: none;
+   
 `;
