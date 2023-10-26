@@ -20,4 +20,8 @@ export const StyledText = styled.div`
 
 export const StyledAddInfo = styled.div`
     border-bottom: 3px solid gray;
-`
+`;
+
+export const StyledBackButton = styled.p`
+    margin: 0;
+`;

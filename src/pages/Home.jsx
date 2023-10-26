@@ -2,8 +2,11 @@ import { FilmsList } from "components/FilmsList";
 import { getTrendingFilms } from "components/Service"
 import { useEffect, useState } from "react"
 
+
 export const Home = () => {
     const [films, setFilms] = useState([]);
+
+
 
     useEffect(() => {
         getTrendingFilms()
@@ -19,7 +22,7 @@ export const Home = () => {
     return (
         <main>
             <h1>Trending today:</h1>
-            <FilmsList films={films}/>
+            <FilmsList films={films} />
         </main>
     )
 }

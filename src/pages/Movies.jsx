@@ -9,9 +9,8 @@ export const Movies = () => {
     const [films, setFilms] = useState([]);
     const userQuery = searchParams.get('query') ?? '';
 
-    // console.log(userQuery);
     
-    const handleChange = (value) => {
+    const handleSubmit = (value) => {
         const newParams = value !== '' ? { query: value } : {};
         setSearchParams(newParams);
     };
@@ -32,8 +31,7 @@ export const Movies = () => {
     return (
         <main>
             <SearchFild
-                query={userQuery}
-                onChange={handleChange} />
+                onSubmit={handleSubmit} />
             {films.length > 0 && <FilmsList films={films} />}
         </main>
     )

@@ -1,13 +1,23 @@
-export const SearchFild = ({ query, onChange }) => {
+import { useState } from "react"
+
+export const SearchFild = ({onSubmit}) => {
+
+    const [value, setValue] = useState('');
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        onSubmit(value);
+        e.target.reset();
+    }
 
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <input
                 type="text"
-                value={query}
-                onChange={(e) => onChange(e.currentTarget.value)}
+                value={value}
+                onChange={(e) => setValue(e.currentTarget.value)}
             />
-            <button type="button">Search</button>
+            <button type="submit">Search</button>
         </form>
     )
 }

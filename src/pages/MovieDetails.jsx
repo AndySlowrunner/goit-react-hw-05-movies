@@ -1,5 +1,5 @@
-import { Link, Outlet, useParams } from "react-router-dom";
-import { useEffect, useState } from "react"
+import { Link, Outlet, useLocation, useParams } from "react-router-dom";
+import { useEffect, useRef, useState } from "react"
 import { getFilmDetails } from "components/Service"
 import { StyledAddInfo, StyledBox, StyledText } from "./MovieDetails.styled";
 
@@ -7,6 +7,9 @@ export const MovieDetails = () => {
     const { id } = useParams();
     const [movie, setMovie] = useState({});
     
+    const location = useLocation();
+    const backLinkLocationRef = useRef(location.state?.from);
+
     useEffect(() => {
         getFilmDetails(id)
             .then((response) => {
@@ -22,6 +25,7 @@ export const MovieDetails = () => {
 
     return (
         <main>
+            <Link to={backLinkLocationRef.current}>Go back</Link>
             <StyledBox>
                 <img
                     src={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : defaultImg}
