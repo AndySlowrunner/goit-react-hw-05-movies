@@ -1,9 +1,9 @@
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
-import { useEffect, useRef, useState } from "react"
+import { Suspense, useEffect, useRef, useState } from "react"
 import { getFilmDetails } from "components/Service"
 import { StyledAddInfo, StyledBox, StyledLink, StyledText } from "./MovieDetails.styled";
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
     const { id } = useParams();
     const [movie, setMovie] = useState({});
     
@@ -64,8 +64,11 @@ export const MovieDetails = () => {
                     </li>
                 </ul>
             </StyledAddInfo>
-            <Outlet/>
+            <Suspense fallback={<div>Loading subpage ...</div>}>
+                <Outlet />
+            </Suspense>
         </main>
     )
 }
 
+export default MovieDetails;

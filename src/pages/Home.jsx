@@ -3,7 +3,7 @@ import { getTrendingFilms } from "components/Service"
 import { useEffect, useState } from "react"
 
 
-export const Home = () => {
+const Home = () => {
     const [films, setFilms] = useState([]);
 
 
@@ -26,3 +26,5 @@ export const Home = () => {
         </main>
     )
 }
+
+export default Home;
