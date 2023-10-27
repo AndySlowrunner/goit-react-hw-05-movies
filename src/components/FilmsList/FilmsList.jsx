@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom"
-import { Link } from "./FilmList.styled";
+import { Link } from "./FilmsList.styled";
 
 export const FilmsList = ({ films }) => {
     const location = useLocation();

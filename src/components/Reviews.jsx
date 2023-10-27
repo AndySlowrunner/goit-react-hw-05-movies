@@ -28,7 +28,7 @@ const Reviews = () => {
                             <p>{result.content}</p>
                         </li>))}
                 </ul>
-            ) : (<p>На даний момент відгуків немає</p>)
+            ) : (<p>We don't have any reviews for this movie.</p>)
             }
         </div>
     )

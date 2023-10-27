@@ -1,4 +1,4 @@
-import { FilmsList } from "components/FilmsList";
+import { FilmsList } from "components/FilmsList/FilmsList";
 import { getTrendingFilms } from "components/Service"
 import { useEffect, useState } from "react"
 
