@@ -6,6 +6,10 @@ export const SearchFild = ({onSubmit}) => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (value === '') {
+            alert("Please enter a movie title");
+            return
+        }
         onSubmit(value);
         e.target.reset();
     }

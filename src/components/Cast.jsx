@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 const Cast = () => {
     const { id } = useParams();
-    const [ actors, setActors ] = useState({});
+    const [ actors, setActors ] = useState([]);
 
     useEffect(() => {
         getFilmCredits(id)

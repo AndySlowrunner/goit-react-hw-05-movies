@@ -5,7 +5,7 @@ import { StyledAddInfo, StyledBox, StyledLink, StyledText } from "./MovieDetails
 
 const MovieDetails = () => {
     const { id } = useParams();
-    const [movie, setMovie] = useState({});
+    const [movie, setMovie] = useState(null);
     
     const location = useLocation();
     const backLinkLocationRef = useRef(location.state?.from);
@@ -26,33 +26,30 @@ const MovieDetails = () => {
     return (
         <main>
             <StyledLink to={backLinkLocationRef.current}>Go back</StyledLink>
-            <StyledBox>
-                <img
-                    src={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : defaultImg}
-                    width={250}
-                    alt="poster"
-                />
-                <StyledText>
-                    {movie.title ? <h2>{movie.title}</h2> : null}
-                    {movie.vote_average ? <p>User Score: {movie.vote_average.toFixed(1) * 10}%</p> : null}
-                    {movie.overview ? (
-                    <div>
-                        <h3>Overview</h3>
-                        <p>{movie.overview}</p>
-                    </div>
-                    ) : null}
-                    {movie.genres ? (
-                    <div>
-                        <h3>Genres</h3>
-                        <ul>
-                        {movie.genres.map((genre) => (
-                            <li key={genre.id}>{genre.name}</li>
-                        ))}
-                        </ul>
-                    </div>
-                    ) : null}
-                </StyledText>
-            </StyledBox>
+            {movie &&
+                <StyledBox>
+                    <img
+                        src={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : defaultImg}
+                        width={250}
+                        alt="poster"
+                    />
+                    <StyledText>
+                        <h2>{movie.title}</h2>
+                        <p>User Score: {movie.vote_average.toFixed(1) * 10}%</p>
+                            <div>
+                                <h3>Overview</h3>
+                                <p>{movie.overview}</p>
+                            </div>
+                            <div>
+                                <h3>Genres</h3>
+                                <ul>
+                                    {movie.genres.map((genre) => (
+                                        <li key={genre.id}>{genre.name}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                    </StyledText>
+                </StyledBox>}
             <StyledAddInfo>
                 <p>Additional information</p>
                 <ul>

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const Reviews = () => {
     const { id } = useParams();
-    const [reviews, setReviews] = useState({});
+    const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
         getFilmReviews(id)

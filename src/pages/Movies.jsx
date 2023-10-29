@@ -7,7 +7,7 @@ import { useSearchParams } from "react-router-dom"
 const Movies = () => {
     const [searchParams, setSearchParams] = useSearchParams({});
     const [films, setFilms] = useState([]);
-    const userQuery = searchParams.get('query') ?? '';
+    const userQuery = searchParams.get('query');
 
     
     const handleSubmit = (value) => {
@@ -16,7 +16,9 @@ const Movies = () => {
     };
 
     useEffect(() => {
-        if (userQuery !== '') {
+        if (!userQuery) {
+            return
+        }
             searchFilmByQuery(userQuery)
                 .then(response => {
                     const newFilms = response.results;
@@ -25,7 +27,6 @@ const Movies = () => {
                 .catch(error => {
                     console.error('Помилка при отриманні масиву фільмів', error)
                 });
-        }
     }, [userQuery]);
     
     return (
