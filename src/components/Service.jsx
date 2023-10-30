@@ -1,11 +1,16 @@
 import axios from "axios";
 
 const API_KEY = '233c7f71dccea172993da041a5656481';
+axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
+const params = {
+    api_key: API_KEY,
+    language: 'en - US'
+}
 
 export const getTrendingFilms = async() => {
     
     try {
-        const response = await axios.get(`https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}&language=en-US`);
+        const response = await axios.get('trending/all/day', {params});
         return response.data;
     } catch (error) {
 
@@ -17,7 +22,7 @@ export const getTrendingFilms = async() => {
 export const getFilmDetails = async(id) => {
     
     try {
-        const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`);
+        const response = await axios.get(`movie/${id}`, {params});
         return response.data;
     } catch (error) {
 
@@ -29,7 +34,7 @@ export const getFilmDetails = async(id) => {
 export const getFilmCredits = async(id) => {
     
     try {
-        const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}&language=en-US`);
+        const response = await axios.get(`movie/${id}/credits`, {params});
         return response.data;
     } catch (error) {
 
@@ -41,7 +46,7 @@ export const getFilmCredits = async(id) => {
 export const getFilmReviews = async(id) => {
     
     try {
-        const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${API_KEY}&language=en-US&page=1`);
+        const response = await axios.get(`movie/${id}/reviews?page=1`, {params});
         return response.data;
     } catch (error) {
 
@@ -53,7 +58,7 @@ export const getFilmReviews = async(id) => {
 export const searchFilmByQuery = async(query) => {
     
     try {
-        const response = await axios.get(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&api_key=${API_KEY}&language=en-US&page=1`);
+        const response = await axios.get(`search/movie?query=${query}&include_adult=false&page=1`, {params});
         return response.data;
     } catch (error) {
 
